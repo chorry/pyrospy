@@ -4,6 +4,13 @@ declare(strict_types=1);
 
 namespace Zoon\PyroSpy\Plugins\Filtering;
 
+use Zoon\PyroSpy\Sample;
+
+/**
+ * @phpstan-import-type TagsArray from Sample
+ * @phpstan-import-type TraceStruct from Sample
+ */
+
 final class FilterRule
 {
     /**
@@ -19,6 +26,13 @@ final class FilterRule
         private ?int $lineNumber = null,
     ) {}
 
+    /**
+     * @param TagsArray $tags
+     * @param int $lineNumber
+     * @param array<int, string> $lineArray
+     * @return bool
+     * @throws \Exception
+     */
     public function filter(array $tags, int $lineNumber, array $lineArray): bool
     {
         if ($this->lineNumber !== null && $lineNumber !== $this->lineNumber) {
@@ -38,6 +52,10 @@ final class FilterRule
         };
     }
 
+    /**
+     * @param array{0:string, 1:string} $traceLine
+     * @return \Generator
+     */
     private function getLinePart(array $traceLine): \Generator
     {
         if (($this->tracePart & FilterMatchingType::SRC_METHOD->value) === FilterMatchingType::SRC_METHOD->value) {
@@ -51,6 +69,10 @@ final class FilterRule
         return null;
     }
 
+    /**
+     * @param array{0:string, 1:string} $lineArray
+     * @return bool
+     */
     private function filterByRegexp(array $tags, array $lineArray): bool
     {
         if (($this->tracePart & FilterMatchingType::SRC_TAG_NAME->value) === FilterMatchingType::SRC_TAG_NAME->value) {
@@ -70,6 +92,11 @@ final class FilterRule
         return false;
     }
 
+
+    /**
+     * @param array{0:string, 1:string} $lineArray
+     * @return bool
+     */
     private function filterByDirectMatch(array $tags, array $lineArray): bool
     {
         if (

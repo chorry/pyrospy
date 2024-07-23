@@ -119,7 +119,7 @@ EOT,
                     FilterMatchingType::CHK_REGEXP->value,
                     FilterMatchingType::SRC_METHOD->value,
                     '#sleep#',
-                    2
+                    2,
                 ),
             ],
             'traces' => <<<EOT
@@ -138,7 +138,7 @@ EOT,
                     FilterMatchingType::CHK_REGEXP->value,
                     FilterMatchingType::SRC_METHOD->value,
                     '#sleep#',
-                    2
+                    2,
                 ),
             ],
             'traces' => <<<EOT
