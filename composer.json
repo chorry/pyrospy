@@ -1,5 +1,5 @@
 {
-    "name": "zoonru/pyrospy",
+    "name": "zoon/pyrospy",
     "description": "Adapter from phpspy to pyroscope",
     "type": "project",
     "license": "MIT",
@@ -28,6 +28,10 @@
         }
     },
     "require-dev": {
-        "psalm/phar": "^5.9"
+        "psalm/phar": "^5.9",
+        "phpunit/phpunit": "^11.2",
+        "phpstan/phpstan": "^1.11",
+        "friendsofphp/php-cs-fixer": "^3.59",
+        "dg/bypass-finals": "^1.8"
     }
 }
